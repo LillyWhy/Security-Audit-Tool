@@ -1,4 +1,4 @@
-# Security-Audit-Tool
+# Security-Audit-Tool (Ver 0.1R)
 An educational C# console tool for security auditing, SSL checks, and generating HTML reports. For learning purposes only.
 
 # Security Scanner CLI
@@ -6,6 +6,10 @@ An educational C# console tool for security auditing, SSL checks, and generating
 An educational console application built in C# designed to explore network reconnaissance, SSL/TLS certificate validation, security header analysis, and reporting automation. 
 
 Disclaimer: This tool is created strictly for educational purposes, portfolio presentation, and authorized security auditing in personal lab environments. It is not intended for malicious use or unauthorized scanning.
+
+## What's New in Ver 0.1R
+- **Security Patch**: Updated the underlying SQLite dependency (`SQLitePCLRaw.lib.e_sqlite3`) to version 2.1.12 to resolve known high-severity vulnerabilities (GHSA-2m69-gcr7-jv3q).
+- Improved overall stability for local audit history tracking.
 
 ## Project Overview
 
@@ -24,7 +28,7 @@ The goal of this project is to understand how automated security scanners work u
 
 - Language: C# (.NET)
 - Networking: HttpClient, TcpClient, SslStream
-- Database: SQLite via Microsoft.Data.Sqlite
+- Database: SQLite via Microsoft.Data.Sqlite (secure dependency configuration)
 - Concurrency: Task Parallel Library (TPL), ConcurrentBag
 - Serialization and DNS: System.Text.Json, Cloudflare DNS-over-HTTPS API
 
