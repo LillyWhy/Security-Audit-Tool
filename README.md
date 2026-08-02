@@ -16,7 +16,37 @@
 * **Webhook Integration:** Send instant security alert notifications to Webhooks (Discord, Slack, etc.).
 
 ---
+# About Program
+ Interactive Menu Options
 
+   *  Scan single domain: Runs a full optimized audit on a target.
+
+   *  Scan multiple domains (Batch): High-speed parallelized concurrent scanning for multiple domains.
+
+   *  Lookup IP & ASN details: Resolves domain IP and fetches network details.
+
+   *  Check DNS & Mail Security: Verifies SPF and DMARC configurations.
+
+   *  Check security.txt & robots.txt: Verifies standard compliance files.
+
+   *  Fast Subdomain Enumeration: Discovers active subdomains concurrently.
+
+   *  View Scan History & Unique Trends: Queries the local SQLite database for historical reports and changes.
+
+   *  Send Webhook Notification: Sends custom notifications via webhook URL.
+
+   *  Exit: Closes the application.
+
+# Output Files
+
+**For every scanned domain, the tool automatically generates:
+
+   * ** {DomainName}_report.json - Structured raw audit data.
+
+   * ** {DomainName}_report.html - Styled standalone web report.
+
+   * ** security_scans.db - Local SQLite database tracking historical scans.
+---
 ## System Requirements
 
 * [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later.
@@ -32,6 +62,9 @@
 * MacOS Sequoia 15.7.8
 
 ---
+## License
+* This tool is created for educational and authorized security auditing purposes only.
+---
 
 ## Installation & Running
 
@@ -41,3 +74,7 @@
 
 ```bash
 dotnet run
+---
+
+
+
