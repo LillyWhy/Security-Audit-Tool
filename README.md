@@ -1,42 +1,43 @@
-# Security-Audit-Tool (Ver 0.1R)
-An educational C# console tool for security auditing, SSL checks, and generating HTML reports. For learning purposes only.
+# SAT - Security Audit Tool
 
-# Security Scanner CLI
+**SAT (Security Audit Tool)** is a high-performance, asynchronous console application written in C# (.NET) designed for rapid security auditing of domains, SSL configurations, HTTP headers, open ports, DNS records, and subdomains.
 
-An educational console application built in C# designed to explore network reconnaissance, SSL/TLS certificate validation, security header analysis, and reporting automation. 
+## Features (v0.4)
 
-Disclaimer: This tool is created strictly for educational purposes, portfolio presentation, and authorized security auditing in personal lab environments. It is not intended for malicious use or unauthorized scanning.
+* **Optimized Full Domain Audit:** Inspects SSL/TLS certificate validity, expiration days, RSA key size, and signature algorithms.
+* **Security Headers Check:** Automatically detects missing security headers such as `HSTS`, `CSP`, `X-Frame-Options`, and `X-Content-Type-Options`.
+* **HTTP to HTTPS Redirection Check:** Verifies if the target correctly forces secure connections.
+* **Concurrent Port Scanning & Subdomain Enumeration:** Fast multi-threaded checks for common ports and subdomains using `ConcurrentBag` and `Parallel.ForEachAsync`.
+* **DNS & Mail Security:** Validates SPF and DMARC records via TXT lookups.
+* **File Compliance:** Checks for the presence of `security.txt` (in root and `.well-known`) and `robots.txt`.
+* **IP & ASN Lookup:** Integrates with external IP intelligence APIs to retrieve hosting provider and geographical details.
+* **Smart SQLite History & Deduplication:** Stores scan history locally, computes state hashes to prevent duplicate logs, and highlights changes between scans.
+* **Multi-Format Reports:** Automatically exports professional reports in **JSON** and **HTML** formats alongside rich CLI output with **actionable remediation steps**.
+* **Webhook Integration:** Send instant security alert notifications to Webhooks (Discord, Slack, etc.).
 
-## What's New in Ver 0.1R
-- **Security Patch**: Updated the underlying SQLite dependency (`SQLitePCLRaw.lib.e_sqlite3`) to version 2.1.12 to resolve known high-severity vulnerabilities (GHSA-2m69-gcr7-jv3q).
-- Improved overall stability for local audit history tracking.
+---
 
-## Project Overview
+## System Requirements
 
-The goal of this project is to understand how automated security scanners work under the hood using native .NET capabilities without relying on heavy third-party security libraries. It combines HTTP networking, TCP socket manipulation, asynchronous programming, DNS queries over HTTPS, and lightweight data persistence using SQLite.
+* [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later.
+* Required NuGet packages:
+  * `Microsoft.Data.Sqlite`
 
-## Key Features
+## Testing Platform
 
-- SSL/TLS Deep Dive: Validates certificate chains, checks expiration time, extracts public key sizes (RSA), and inspects signature algorithms.
-- Security Header Inspection: Evaluates responses for critical headers like Strict-Transport-Security (HSTS), Content-Security-Policy (CSP), X-Frame-Options, and X-Content-Type-Options.
-- Recon and Enumeration: Performs basic subdomain enumeration using threaded wordlist matching and scans common open ports using asynchronous TCP sockets.
-- Fuzzing and File Check: Looks for common exposed sensitive files (such as backup archives, configuration files, and git directories).
-- Local History and Trends: Saves every audit report into a local SQLite database, allowing historical trend comparison between consecutive scans.
-- Multi-Format Export: Automatically generates structured JSON files and human-readable HTML reports complete with score-based evaluations.
+* Macbook Pro 2018 15"
+* Intel Core u7
+* Radeon Pro 560x && Intel UHD 630
+* RAM 16 GB 2400 MHz DDR4
+* MacOS Sequoia 15.7.8
 
-## Project Architecture and Tech Stack
+---
 
-- Language: C# (.NET)
-- Networking: HttpClient, TcpClient, SslStream
-- Database: SQLite via Microsoft.Data.Sqlite (secure dependency configuration)
-- Concurrency: Task Parallel Library (TPL), ConcurrentBag
-- Serialization and DNS: System.Text.Json, Cloudflare DNS-over-HTTPS API
+## Installation & Running
 
-## Getting Started
-
-### Prerequisites
-
-Ensure you have the .NET SDK installed on your machine. You can verify this by running:
+1. Clone the repository or download the source code.
+2. Ensure you have .NET 8.0 installed.
+3. Run the project from your terminal:
 
 ```bash
-dotnet --version
+dotnet run
